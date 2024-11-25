@@ -10,7 +10,7 @@ require("dotenv").config();
 
 // Database connection
 mongoose
-  .connect("mongodb://127.0.0.1:27017/Employe")
+  .connect(process.env.DB_URL)
   .then(() => {
     console.log("DB is connected !!!");
   })
@@ -28,7 +28,7 @@ cloudinary.config({
 // Enable CORS
 app.use(
   cors({
-    origin: "http://localhost:3000", // Replace with your frontend's URL
+    origin: ["http://localhost:3000", "https://employees-rahul.netlify.app"], // Replace with your frontend's URL
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"], // Allow OPTIONS
     allowedHeaders: ["Content-Type", "Authorization"], // Include headers used in requests
     credentials: true, // Allow cookies or authorization headers if needed
